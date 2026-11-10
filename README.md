@@ -38,4 +38,4 @@ root
 		└── mp7.yml
 ```
 ## Keybinds
-I have a specific keybinding system to make it more clear what each keybind does. It exists of a 2/3 letter prefix + _ + action name which can look like: mv_forward, atk_left_mb or ui_accept.
+I have a specific keybinding system to make it more clear what each keybind does. It exists of `2/3-letter-prefix + _ + action-name` which can look like: `mv_forward`, `atk_left_mb` or `ui_accept`.
