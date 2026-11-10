@@ -11,6 +11,7 @@ class_name DefaultMovementConsumer extends MovementConsumer
 
 func _physics_process(delta : float) -> void:
 	var input_direction : Vector3 = (root_entity.transform.basis * _vec2_to_vec3(movement_provider.movement.horizontal)).normalized()
+	var on_floor : bool = root_entity.is_on_floor()
 	
 	var target_velocity = input_direction * max_speed;
 	
@@ -19,7 +20,7 @@ func _physics_process(delta : float) -> void:
 		_get_movement_modifier() * delta
 	)
 	
-	if root_entity.is_on_floor() and movement_provider.movement.jump:
+	if on_floor and movement_provider.movement.jump:
 		root_entity.velocity.y += jump_force
 	
 	root_entity.move_and_slide()

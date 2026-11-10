@@ -21,6 +21,11 @@ metadata/_custom_type_script = "uid://civ5w0606ycsu"
 
 [node name="DefaultMovementConsumer" type="Node" parent="Components" unique_id=1746885352 node_paths=PackedStringArray("root_entity", "movement_provider")]
 script = ExtResource("3_p8n2y")
+max_speed = 20.0
+ground_acceleration = 75.0
+ground_deceleration = 150.0
+air_acceleration = 50.0
+air_deceleration = 5.0
 root_entity = NodePath("../..")
 movement_provider = NodePath("../DefaultMovementProvider")
 metadata/_custom_type_script = "uid://yhoyjdos8483"
