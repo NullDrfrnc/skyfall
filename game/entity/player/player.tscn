@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cpdnqdomi68qj"]
+
+[ext_resource type="Script" uid="uid://bsdmoq5n65o8u" path="res://game/entity/player/player.gd" id="1_b7m82"]
+[ext_resource type="Script" uid="uid://einhxbor7qvh" path="res://game/component/movement/provider/default_movement_provider_3d.gd" id="2_0b5cm"]
+[ext_resource type="Script" uid="uid://yhoyjdos8483" path="res://game/component/movement/consumer/default_movement_consumer_3d.gd.gd" id="3_p8n2y"]
+[ext_resource type="Script" uid="uid://civ5w0606ycsu" path="res://game/component/movement/gravity_component.gd" id="4_dmj0o"]
+[ext_resource type="Script" uid="uid://dtxq3vdr5miok" path="res://game/component/movement/camera_component.gd" id="5_jsxn6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8n2y"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1407213805]
+script = ExtResource("1_b7m82")
+metadata/_custom_type_script = "uid://bsdmoq5n65o8u"
+
+[node name="Components" type="Node3D" parent="." unique_id=205144644]
+
+[node name="GravityComponent" type="Node" parent="Components" unique_id=95131725 node_paths=PackedStringArray("body")]
+script = ExtResource("4_dmj0o")
+body = NodePath("../..")
+metadata/_custom_type_script = "uid://civ5w0606ycsu"
+
+[node name="DefaultMovementConsumer" type="Node" parent="Components" unique_id=1746885352 node_paths=PackedStringArray("root_entity", "movement_provider")]
+script = ExtResource("3_p8n2y")
+root_entity = NodePath("../..")
+movement_provider = NodePath("../DefaultMovementProvider")
+metadata/_custom_type_script = "uid://yhoyjdos8483"
+
+[node name="DefaultMovementProvider" type="Node" parent="Components" unique_id=354196070]
+script = ExtResource("2_0b5cm")
+metadata/_custom_type_script = "uid://einhxbor7qvh"
+
+[node name="CameraComponent" type="Node" parent="Components" unique_id=269406991 node_paths=PackedStringArray("entity", "pivot")]
+script = ExtResource("5_jsxn6")
+entity = NodePath("../..")
+pivot = NodePath("../../Pivot")
+metadata/_custom_type_script = "uid://dtxq3vdr5miok"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1975445248]
+shape = SubResource("BoxShape3D_p8n2y")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=1126468215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Pivot" unique_id=764334054]
